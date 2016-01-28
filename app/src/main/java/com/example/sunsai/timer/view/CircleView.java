@@ -95,7 +95,6 @@ public class CircleView extends View {
         changeAngle(progress * 360.0f / 100.0f );
     }
 
-
     /**
      * 画有颜色的圆弧
      * @param canvas
@@ -134,7 +133,6 @@ public class CircleView extends View {
         mPaint.setColor(color);
         mPaint.setStyle(style);
         mPaint.setStrokeWidth(width);
-
     }
 
 
