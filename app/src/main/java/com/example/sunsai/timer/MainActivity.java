@@ -18,6 +18,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
+/**
+ * 结构混乱，需要进一步重构
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
