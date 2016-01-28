@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Timer</string>
+    <string name="start">开始</string>
+    <string name="jiquan">记圈</string>
+</resources>

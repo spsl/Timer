@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleView">
+        <attr name="backgroundColor" format="color"/>
+        <attr name="circleColor" format="color"/>
+        <attr name="circleWidth"  format="dimension"/>
+        <attr name="radius"  format="dimension"/>
+        <attr name="centerX"  format="dimension"/>
+        <attr name="centerY"  format="dimension"/>
+        <attr name="pointRadius" format="dimension"/>
+        <attr name="pointColor" format="color"/>
+        <attr name="angle" format="float"/>
+    </declare-styleable>
+
+
+</resources>
