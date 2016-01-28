@@ -11,6 +11,4 @@
         <attr name="pointColor" format="color"/>
         <attr name="angle" format="float"/>
     </declare-styleable>
-
-
 </resources>
