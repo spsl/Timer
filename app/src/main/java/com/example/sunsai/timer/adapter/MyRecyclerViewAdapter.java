@@ -1,4 +1,4 @@
-package com.example.sunsai.timer;
+package com.example.sunsai.timer.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.sunsai.timer.R;
 
 import java.util.List;
 
@@ -15,34 +17,39 @@ import java.util.List;
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder> {
 
 
-    private List<String> list;
+    private List<String> mList;
 
-    private Context context;
+    private Context mContext;
 
     public MyRecyclerViewAdapter(Context context, List<String> list) {
-        this.list = list;
-        this.context = context;
+        this.mList = list;
+        this.mContext = context;
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        String item = getItem(position);
-        holder.getTextView().setText(item);
+        holder.getTextView().setText(getItem(position));
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.list_view_item, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.list_view_item, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return mList.size();
     }
 
+
+    /**
+     * 最后添加的显示在最上面
+     * @param pos
+     * @return
+     */
     public String getItem(int pos) {
-        return list.get(getItemCount() -1 - pos);
+        return mList.get(getItemCount() -1 - pos);
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -54,7 +61,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         public MyViewHolder(View itemView) {
             super(itemView);
             view = itemView;
-            textView = (TextView) itemView.findViewById(R.id.text_view);
+            textView = (TextView) view.findViewById(R.id.text_view);
         }
     }
 }

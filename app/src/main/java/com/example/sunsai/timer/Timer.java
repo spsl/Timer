@@ -1,6 +1,6 @@
 package com.example.sunsai.timer;
 
-import com.orhanobut.logger.Logger;
+import com.example.sunsai.timer.common.TwoTuple;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,20 +13,19 @@ import java.util.List;
 public class Timer {
 
     private long time;
-
     private long beginTime;
-
     private long sumTime;
-
     private long oneSubTime;
-
     private long count;
-
     public boolean running;
 
     private List<String> subTimes;
 
+    private SimpleDateFormat simpleDateFormat;
+
+
     public Timer() {
+        simpleDateFormat = new SimpleDateFormat("mm:ss.SS");
         init();
     }
 
@@ -103,20 +102,18 @@ public class Timer {
         return subTimes;
     }
 
-    public long getSumTime () {
-        update();
-        return sumTime + time;
+    public String getOneItem(long roundTime, long allTime) {
+        return "#" + count + "    " + toStrTime(roundTime) +"    " + toStrTime(allTime);
     }
 
-    public long getSubTime() {
+    /**
+     *
+     * @return _1 是一圈的时间， _2 是目前总的时间
+     */
+    public TwoTuple<Long, Long> getNowTime() {
         update();
-        return oneSubTime + time;
-    }
-
-    public String getRoundStrTime() {
-        long subT = oneSubTime + time;
-        long allT = sumTime + time;
-        return "#" + count + "    " + toStrTime(subT) +"    " + toStrTime(allT);
+        long t = time;
+        return new TwoTuple<>(oneSubTime + t, sumTime + t);
     }
 
     /**
@@ -148,7 +145,12 @@ public class Timer {
         }
     }
 
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss.SS");
+
+    /**
+     * 转换时间格式
+     * @param t
+     * @return
+     */
     public String toStrTime(long t) {
         return simpleDateFormat.format(new Date(t));
     }

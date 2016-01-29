@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.sunsai.timer.adapter.MyRecyclerViewAdapter;
+import com.example.sunsai.timer.common.TwoTuple;
 import com.example.sunsai.timer.view.CircleView;
 import com.example.sunsai.timer.view.TimeView;
 
@@ -64,9 +66,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void updateTime() {
         timer.update();
-        topTextView.setText(timer.getRoundStrTime());
-        mCircleView.changeProgress((float) timer.getSubTime() / 600f);
-        mTimeView.setTime(timer.getSumTime());
+        TwoTuple<Long, Long> result = timer.getNowTime();
+        topTextView.setText(timer.getOneItem(result._1, result._2));
+        mCircleView.changeProgress((float) result._1 / 600f);
+        mTimeView.setTime(result._2);
     }
 
 
@@ -93,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     adapter.notifyDataSetChanged();
                     updateTime();
                 } else {
-                    timer.init();
+                    timer.stop();
                     topTextView.setText("");
                     mButton.setText("开始");
                     updateTime();
